@@ -1,27 +1,25 @@
 const replay = document.getElementById('newGame')
-let score = 0;
+//let score;
 let scoreBoard = document.querySelector('.scoreBoard');
 const colors = ['green', 'blue', 'pink', 'purple', 'red', 'orange', 'black', 'teal']
 
-let clear = document.querySelectorAll('.card');
+//trevor 
+const doublecolors = colors.concat(colors)
 
+let clear = document.querySelectorAll('.card');
 
 //color randomizer, help was acquired from friend currently working as fullstack dev
 function newGame() {
     const cards = [...document.querySelectorAll('.card')];
     // console.log(cards)
-    for (let color of colors) {
+    for (let color of doublecolors) {
         const cardAIndex = parseInt(Math.random() * cards.length);
         const cardA = cards[cardAIndex];
         cards.splice(cardAIndex, 1);
         cardA.className += `${color}`;
         cardA.setAttribute('data-color', color);
-
-        const cardBIndex = parseInt(Math.random() * cards.length);
-        const cardB = cards[cardBIndex];
-        cards.splice(cardBIndex, 1);
-        cardB.className += `${color}`;
-        cardB.setAttribute('data-color', color);
+        scoreBoard.innerHTML = 0;
+        score = 0; 
     };
 
 };
@@ -84,4 +82,3 @@ function cardClicked(e) {
         }
     }
 }
-
